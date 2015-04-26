@@ -30,11 +30,6 @@
 #include <gui/IGraphicBufferAlloc.h>
 #include <gui/ISurfaceComposerClient.h>
 
-// MStar Android Patch Begin
-#ifdef ENABLE_HWCURSOR
-#include <binder/IMemory.h>
-#endif
-// MStar Android Patch End
 
 namespace android {
 // ----------------------------------------------------------------------------
@@ -128,28 +123,6 @@ public:
             uint32_t reqWidth, uint32_t reqHeight,
             uint32_t minLayerZ, uint32_t maxLayerZ) = 0;
 
-    // MStar Android Patch Begin
-    virtual status_t setAutoStereoMode(int32_t identity, int32_t autoStereo) = 0;
-    virtual status_t setBypassTransformMode(int32_t identity, int32_t bypassTransform) = 0;
-    virtual status_t setPanelMode(int32_t panelMode) = 0;
-    virtual status_t getPanelMode(int32_t *panelMode) = 0;
-    virtual status_t setGopStretchWin(int32_t gopNo, int32_t dest_Width, int32_t dest_Height) = 0;
-#ifdef ENABLE_HWCURSOR
-    virtual status_t setHwCursorShow() = 0;
-    virtual status_t setHwCursorHide() = 0;
-    virtual status_t setHwCursorMatrix(float dsdx, float dtdx, float dsdy, float dtdy) = 0;
-    virtual status_t setHwCursorPosition(float positionX, float positionY, float hotSpotX, float hotSpotY, int iconWidth, int iconHeight) =0;
-    virtual status_t setHwCursorAlpha(float alpha) = 0;
-    virtual status_t changeHwCursorIcon() = 0;
-    virtual status_t doHwCursorTransaction() = 0;
-    virtual status_t getHwCursorWidth(int32_t* cursorWidth) = 0;
-    virtual status_t getHwCursorHeight(int32_t* cursorHeight) = 0;
-    virtual status_t getHwCursorStride(int32_t* cursorStride) = 0;
-    virtual sp<IMemory> getHwCursorIconBuf() = 0;
-    virtual status_t loadHwCursorModule() = 0;
-#endif
-    virtual status_t setSurfaceResolutionMode(int32_t width, int32_t height, int32_t hstart,int32_t interleave,int32_t orientation, int32_t value) = 0;
-    // MStar Android Patch End
 };
 
 // ----------------------------------------------------------------------------
